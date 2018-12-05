@@ -1,4 +1,3 @@
-;Create a knowledge base of student information (name, gender, marks). And then write a rule to find a smart kid in the class
 (load "student.clp")
 (assert
 	(student
