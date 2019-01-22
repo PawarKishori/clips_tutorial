@@ -1,0 +1,5 @@
+(level-mother-daughters 1 Laxmi Shanta Mangal Sangeeta)
+(level-mother-daughters 2 Shanta Neha Chanchal)
+(level-mother-daughters 2 Mangal Soni)
+(level-mother-daughters 2 Sangeeta Nilu)
+(level-mother-daughters 3 Soni Kiran)
