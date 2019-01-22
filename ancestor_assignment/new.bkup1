@@ -1,0 +1,17 @@
+(defrule test
+	(m-d ?m $?ds1)
+	;(test (neq (= 0 (length$ $?ds1)) TRUE))
+	=>
+	(assert (pop))
+	(printout t "OK" crlf))
+
+(defrule pop
+	?pop<-(pop)
+	?old<-(m-d ?m ?elder $?remain)
+	(m-d ?elder $?ds2)
+	=>
+	(retract ?pop ?old)
+	(printout t "poped=>" ?elder crlf)
+	(assert (m-d ?m $?remain))
+	(assert (m-d ?m $?ds2 $?remain))
+)
