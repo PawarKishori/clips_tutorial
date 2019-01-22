@@ -1,0 +1,8 @@
+(load "assignment1.clp")
+(ppdefrule test)
+(watch facts)
+(load-facts "parents.dat")
+(matches test)
+;(run)
+;(facts)
+;(exit)
