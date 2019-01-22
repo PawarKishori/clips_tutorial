@@ -13,8 +13,11 @@
 (defrule test
 	?pop<-(pop)
 	?old<-(l-m-d ?l ?m $?ds1)
-	(l-m-d ?l1 =(nth$ 1 $?ds1) $?ds2)
-	(test (neq ?l ?l1))
+	(l-m-d =(+ ?l 1) =(nth$ 1 $?ds1) $?ds2)
+;	(or (l-m-d =(+ ?l 1) =(nth$ 1 $?ds1) $?ds2)
+;	    (l-gm-gds =(+ ?l 1) =(nth$ 1 $?ds1) $?ds2))
+	(test (> (length (rest$ $?ds1)) 0))
+	;(test (neq ?l ?l1))
 	;(current_mother ?m)
 	=>
 ;	(printout t "poped=>" ?old crlf)
@@ -24,11 +27,17 @@
 ;	(assert (l-gm-gds 1 ?m (giveDaughters ?m) ))
 )
 
+(defrule test_for_single_child
+	(l-m-d ?l ?m ?d)
+	(l-m-d =(+ ?l 1) ?d ?gd)
+	=>
+	(assert (l-gm-gds ?l ?m ?gd)))
+
 (defrule test-helper
-	(declare (salience 5))
+	;(declare (salience 5))
 	?f0<-(l-gm-gds ?l ?m $?ds1)
 	?f1<-(l-gm-gds ?l ?m $?ds2)
-	(test (neq $?ds1 $?ds2))
+	(test (neq ?f0 ?f1))
 	=>
 	(retract ?f0 ?f1)
 	(assert (l-gm-gds ?l ?m $?ds2 $?ds1)))
