@@ -8,7 +8,7 @@ beginning programmers guide
 Status of the rule.
 
 new.clp and new-parent.dat these are according to correct logic.
-new-roja.clp and parent_fact.dat is accoring to Roja mam's fact.
+new-roja.clp and new-roja.dat is accoring to Roja mam's fact.
 Roja mam's recursion works fine but the defect in it is, it can't give gm-gd information.
 That can be improved by putting level information of both m and daughter or difference between levle of mother and daughter.
 
@@ -16,6 +16,28 @@ Coming to my rule. I have few issues like:
 1. pop issue: what is the pop issue? whats the condition or rule or check when i need to retract (pop) facts so that my test rule will not fire (l-m-d 1 Lakshi) this kind of facts. Hint: check wheteher rest$ not returning empty list, in assert in action part. It is this point where wrong fact is being asserted.
 2. Mangal -> Soni ->Kiran issue: This issue is arising . why?
 3. Lakshi -> Nilu Neha Chanchal : How to fix the order of appending the list of daughter's daughters.
+
+Issue 2 and 3 is been resolved by new.clp and new.bat file. It is generating l-gm-gds facts for all levels. The level(top-down) here is level of ancestor and here ancestor is handled only upto gradmother level (not deeper than that).
+
+After the discussion of  drawbacks of new.clp with sir, sir has proposed new logic which will handle ancestor-successor relation mapping.
+To implement that logic we need bottom-up levels. i.e. if ancestors are like 
+L->S M Sa
+S->N C
+N->A B
+A->D
+D->P
+
+(l-al-anc-suc 2 4 S P)
+(l-al-anc-suc 2 1 S C)
+(l-al-anc-suc 3 3 N P)
+(l-al-anc-suc 4 2 A P)
+(l-al-anc-suc 5 1 D P)
+
+So here, given fact is (l-m-d 5 D P)
+I need to generate this fact (l-al-anc-suc 5 1 D P)
+After that I need to write other new rule which will use 'al' level information and from bottom to top new facts will be generated.
+
+
 ---------------------------------------------------------------------------------------------------------
 About the practise of debugging and checking the correct syntax.
 
