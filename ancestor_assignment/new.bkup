@@ -1,0 +1,14 @@
+(defrule test
+	(m-d ?m $?ds1)
+	=>
+	(assert (pop))
+	(printout t "OK" crlf))
+
+(defrule pop
+	?pop<-(pop)
+	?old<-(m-d ?m ?elder $?remain)
+	=>
+	(retract ?pop ?old)
+	(printout t "poped=>" ?elder crlf)
+	(assert (m-d ?m $?remain))
+)

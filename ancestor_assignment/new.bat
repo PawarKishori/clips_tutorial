@@ -1,0 +1,10 @@
+(watch facts)
+(load "new.clp")
+(facts)
+(reset)
+(load-facts "new-parents.dat")
+(matches test)
+(matches test-helper)
+(facts)
+;(run)
+
