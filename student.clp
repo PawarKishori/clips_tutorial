@@ -4,26 +4,22 @@
 	(slot marks)
 )
 
-(defrule smart_stdent
-	(student (name ?x))
-	(student (name ?x)(gender ?)(marks ?y))
-	(test (< ?y 86))
-	=>
-	(printout t "Smart Student is " ?x crlf)
-)
-
-;Understand what the following code is doing
-;Reference: https://stackoverflow.com/questions/19332952/clips-expected-the-beginning-of-a-construct
-;(deffacts initial
-
-;	(student
-;		(name "Ayushi")
-;		(gender Female)
-;		(marks	85)
-;	)
-;)
-;(defrule find_name
-;	?name <- (student (name "Kishori"))
+;(defrule smart_stdent
+;	(student (name ?x))
+;	(student (name ?x)(gender ?)(marks ?y))
+;	(test (< ?y 86))
 ;	=>
-;	(printout t ?name crlf)
+;	(printout t "Smart Student is " ?x crlf)
 ;)
+
+;(defrule find  
+;(student (name ?x)(gender Male))
+;=>
+;(printout t "People male" ?x crlf))   
+
+(defrule if_kishori_chanchal
+?f1<-(student (name ?x)(gender Female)(marks ?))
+=>
+(retract ?f1)
+(assert ?f1))
+
