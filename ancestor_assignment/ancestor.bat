@@ -1,6 +1,7 @@
 (watch facts)
 (agenda)
 (load "ancestor.clp")
+(load-facts "ancestor-leaf-id.dat")
 (load-facts "ancestor.dat")
 (matches add_length_of_daughter)
 (matches split_daughters)
