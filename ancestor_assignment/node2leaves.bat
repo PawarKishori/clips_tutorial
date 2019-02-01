@@ -1,0 +1,5 @@
+(load "node2leaves.clp")
+(load-facts "node2leaves.dat")
+(watch all)
+(run)
+(facts)
