@@ -1,0 +1,18 @@
+&:
+The predicate field constraint,:, is useful for performing predicate tests directly
+within patterns. In many ways it is similar to performing a test CE directly after a
+pattern, although in some cases, as will be discussed in Chapter 11, it is more
+efficient to use the predicate field constraint than it is to use a test CE. The
+predicate field constraint can be used just like a literal field constraint. It can stand
+by itself in a field or be used as one part of a more complex field using the ~, &,
+and I connective field constraints. The predicate field constraint is always followed
+by a function for evaluation. As with a test CE, this function should be a predicate
+function.
+
+ (defrule substitute
+        (Head-Level-Mother-Daughters ?h1 ?l1 ?m1 $?ds1)
+        (Head-Level-Mother-Daughters ?h1 ?l1 ?m1 ?elderDaughter&:(first$ $?ds1))
+        =>
+        (printout t "First of " ?m1 "=>" ?elderDaughter  crlf)
+        (printout t "Rest of " ?m1 "=>" (rest$ $?ds1)  crlf))
+

@@ -1,0 +1,12 @@
+https://www.youtube.com/watch?v=XX8Fxze6Np8&t=78s
+
+https://www.csie.ntu.edu.tw/~sylee/courses/clips/bpg/top.html
+http://sequoia.ict.pwr.wroc.pl/~witold/ai/CLIPS_tutorial/
+https://groups.google.com/forum/m/#!topic/CLIPSESG/ZIhg-SKLglk
+
+http://clipsrules.sourceforge.net/index.html
+http://www.clipsrules.net/Documentation.html
+http://clipsrules.sourceforge.net/FAQ.html  => What is CLIPS
+https://stackoverflow.com/questions/19332952/clips-expected-the-beginning-of-a-construct
+http://140.118.48.162/gjhwang/KE&ES%20-%20CLIPS02-Pattern%20Matching.pdf
+https://www.csie.ntu.edu.tw/~sylee/courses/clips/rhs.htm

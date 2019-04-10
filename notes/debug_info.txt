@@ -1,0 +1,33 @@
+(defrule findGrandRelation
+        (m-d ?m $?ds1)
+        ?f0<-(m-d ?m first$ $?ds1)
+        (m-d first$ first$ $?ds1 $?ds2 )
+        =>
+        (printout t "rule fired" crlf)
+;       (retract ?f0)
+;       (assert (m-d ?m $?ds2 rest$ $?ds1))
+
+)
+
+         CLIPS (V6.24 06/15/06)
+CLIPS> (load "assignment1.clp")
+Defining defrule: findGrandRelation +j+j+j
+TRUE
+CLIPS> (watch all)
+CLIPS> (load-facts "parents.dat")
+==> f-0     (m-d Laxmi Shanta Mangal Sangeeta)
+==> f-1     (m-d Mangal Soni)
+==> f-2     (m-d Sangeeta Nilu)
+==> f-3     (m-d Shanta Kishori Chanchal)
+TRUE
+CLIPS> (run)
+<== Focus MAIN
+0 rules fired        Run time is 1.5451994840987e-05 seconds.
+0.0 rules per second.
+4 mean number of facts (4 maximum).
+0 mean number of instances (0 maximum).
+0 mean number of activations (0 maximum).
+CLIPS> (exit)
+
+
+

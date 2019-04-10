@@ -1,0 +1,239 @@
+
+---------------------------------------------------------------------------------------------------------
+About the practise of debugging and checking the correct syntax.
+
+Scenario 1:
+Here I was trying to check whether I can call function in condition part.
+My conclusion: Function could not be called in condition part.
+Correct Conclusion: I don't know the syntax of calling the function in condition part.
+Trial1:
+---
+CLIPS> (assert (name kishori))
+<Fact-0>
+CLIPS> (defrule first
+	(name ?x)
+	(name (nth$ 1 ?x))
+	=>
+	(printout t "OK" crlf)
+)
+
+[PRNTUTIL2] Syntax Error:  Check appropriate syntax for defrule.
+
+ERROR:
+(defrule MAIN::first
+   (name ?x)
+   (name (
+CLIPS> (exit)
+---
+Trail 1's error was at (nth$.. call, this was indicating error while calling nth. It was sysntactic error. But it was not written at anywhere that function can't be called in condition part. So my conclusion was wrong. 
+===========================================================================
+Trial2: Sir asked to write a simple defrule where nth$ is called in condition part. So first I asserted a list facts and name fact and thought to use it in defrule in condition part.
+---
+CLIPS> (assert (name kishori))
+<Fact-0>
+CLIPS> (assert (list (create$ kishori a b c)))
+<Fact-1>
+CLIPS> (facts)
+f-0     (name kishori)
+f-1     (list kishori a b c)
+For a total of 2 facts.
+CLIPS> (defrule first
+	(name ?x)
+	(list $?ls)   
+	(list (nth$ 1 $?ls) 
+)
+)
+
+[PRNTUTIL2] Syntax Error:  Check appropriate syntax for defrule.
+
+ERROR:
+(defrule MAIN::first
+   (name ?x)
+   (list $?ls)
+   (list (
+
+CLIPS> (defrule first
+	(name (nth$ 1 $?ls))
+	=>
+	(printout t "OK" crlf )
+)
+
+[PRNTUTIL2] Syntax Error:  Check appropriate syntax for defrule.
+ERROR:
+(defrule MAIN::first
+   (name (
+CLIPS> (defrule first
+	(name (nth$ 1 (create$ kishori a b c)))
+	=>	
+	(printout t "OK" crlf))
+
+[PRNTUTIL2] Syntax Error:  Check appropriate syntax for defrule.
+
+ERROR:
+(defrule MAIN::first
+   (name (
+---
+In trial2 I got stuck at what should be written in condition of defrule to check whether nth$ working or not, then sir asked me to create a list inside rule itself using create$ function and write new rule.
+===========================================================================
+Trial3:
+I wrote create$ function in condition part of the rule, and I got error again. This was happening because nth$ was calling create$, and I was not writing correct version on nth$ call which is =(nth$... But I again concluded wrongly that create function can't be called in condition part of rule and I called create$ in action part of rule in next trial.
+
+---
+CLIPS> (defrule first
+	(name kishori)
+	=>
+	(printout t "OK" (nth$ 1 (create$ kishori a b c))))
+CLIPS> (run)
+OKkishoriCLIPS> (defrule assertfirst
+			(name kishori)
+			=>
+			(assert (name (nth$ 1 (create$ kishori a b c)))))
+CLIPS> (run)
+CLIPS> (facts)
+f-0     (name kishori)
+f-1     (list kishori a b c)
+For a total of 2 facts.
+---
+In Trial3 nth$ could successfully call create$. This is because we need npt to write =(nth$.. in the action part, as we are asserting that fact. So it allows you to call nth$ function without any = sign. 
+Btw above rule fired but (name kishori) fact was already existed, so I could not see anything happening in rule after (run).
+===========================================================================
+Trail4:
+In this trial I wanted to see whether rule is being fired or not explicitly. So I did that using printout statement. And I also asserted new fact.
+
+CLIPS> (defrule assertfirst
+	(name kishori)
+	=>
+	(assert (name (nth$ 1 (create$ kishori a b c)) pawar ))
+	(printout t "New fact asserted")
+)
+CLIPS> (run)
+New fact assertedCLIPS> (facts)
+f-0     (name kishori)
+f-1     (list kishori a b c)
+f-2     (name kishori pawar)
+For a total of 3 facts.
+CLIPS> (exit)
+===========================================================================
+Trial5:
+But sir's argument was there should npt be any nase condition to check whatever we wanna check, so dont write any given condition and fire the rule and check the syntax of "calling of function (nth$) in action part) So I did so. 
+---
+raudra@raudra:~/alignment/clips/clips_prog$ clips
+         CLIPS (V6.24 06/15/06)
+CLIPS> (defrule first
+	=>
+	(assert (name (nth$ 1 (create$ kishori a b c)))
+	(printout t "asserted" crlf))
+)
+CLIPS> (run)
+CLIPS> (defrule first
+	=>
+	(assert (name (nth$ 1 (create$ kishori a b c))))
+	(printout t "asserted" crlf))
+CLIPS> (run)
+---
+But this failed again. This time the error was in the condition part. Here condition was nothing. Read the following to find why the above rule was not firing.
+If a rule has no patterns, the special pattern (initial-fact) will be added as a pattern for die rule. Since the initial-fact deffacts is automatically defined, any rules with no patterns on their LHSs will be activated wben a reset command is performed since the (initial-fact) fact will automatically be asserted, Thus any rule without LHS patterns will be placed on the agenda when a reset is performed.
+YES. My mistake was I did not do (reset) . If I would have done it, the rule would have fired.
+===========================================================================
+Trail6:
+"Equal to" trial with wrong understanding.
+Here, me and sir thought the value of wholeexpression nth$.. is assigned to ?id. And I started trying the same. But as it was half understood, it was giving errors accordingly.
+
+CLIPS> (assert (name kishori))
+<Fact-0>
+CLIPS> (facts)
+f-0     (name kishori)
+For a total of 1 fact.
+CLIPS> (defrule first 
+	(name ?id =(nth$ 1 (create$ kishori a b)))
+	=>
+	(printout t "OK" crlf))
+CLIPS> (run)
+CLIPS> (matches first)
+Matches for Pattern 1
+ None
+Activations
+ None
+CLIPS> (defrule first
+	(name ?id =(nth$ 1 (create$ kishori a b)))
+	=>
+	(printout t "OK" crlf))
+CLIPS> (watch all)
+CLIPS> (run)
+==> Focus MAIN
+<== Focus MAIN
+0 rules fired        Run time is 0.000116381001134869 seconds.
+0.0 rules per second.
+1 mean number of facts (1 maximum).
+0 mean number of instances (0 maximum).
+0 mean number of activations (0 maximum).
+CLIPS> (facts)             
+f-0     (name kishori)
+For a total of 1 fact.
+CLIPS> (defrule firstaction
+	=>
+	(name ?id =(nth$ 1 (create$ kishori a b)))
+	(printout t ?id crlf))
+
+[EXPRNPSR3] Missing function declaration for name.
+
+ERROR:
+(defrule MAIN::firstaction
+   =>
+   (name
+CLIPS> (defrule firstaction
+	=>
+	(assert (name ?id =(nth$ 1 (create$ kkk a b))))
+	(printout t "ID is " ?id crlf))
+
+[PRCCODE3] Undefined variable id referenced in RHS of defrule.
+
+ERROR:
+(defrule MAIN::firstaction
+   =>
+   (assert (name ?id =(nth$ 1 (create$ kkk a b))))
+   (printout t "ID is " ?id crlf))
+CLIPS> (run)
+==> Focus MAIN
+<== Focus MAIN
+0 rules fired        Run time is 7.11159991624299e-05 seconds.
+0.0 rules per second.
+1 mean number of facts (1 maximum).
+0 mean number of instances (0 maximum).
+0 mean number of activations (0 maximum).
+CLIPS> (agenda)
+CLIPS> (defrule firstaction
+	=>
+	(assert (name ?id =(nth$ 1 (create$ kkk a b))))
+        (assert (value ?id1 = (+ 1 1)))
+	(printout t "id and id1 " ?id ?id1))
+
+[PRCCODE3] Undefined variable id referenced in RHS of defrule.
+
+ERROR:
+(defrule MAIN::firstaction
+   =>
+   (assert (name ?id =(nth$ 1 (create$ kkk a b))))
+   (assert (value ?id1 =(+ 1 1)))
+   (printout t "id and id1 " ?id ?id1))
+CLIPS> 
+===========================================================================
+Trail7:
+Finally what worked.
+---
+         CLIPS (V6.24 06/15/06)
+CLIPS> (assert (name kishori))
+<Fact-0>
+CLIPS> (facts)
+f-0     (name kishori)
+For a total of 1 fact.
+CLIPS> (defrule checkFunCallInConditionPart
+	(name =(nth$ 1 (create$ kishori  b s q)))
+        =>
+	(printout t "This fact already exists" crlf))
+CLIPS> (run)
+This fact already exists
+CLIPS> 
+---
+===========================================================================
+

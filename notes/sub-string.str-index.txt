@@ -1,0 +1,2 @@
+(sub-string 1 (str-index "_" "kkk_ppp_ooo_uuu") "kkk_ppp_ooo_uuu")            │kishori@kishori-desktop:~/forked/tmp_anu_dir/tmp/DL_eng_tmp/2.5$ cat H-relation-POS-
+"kkk_"   

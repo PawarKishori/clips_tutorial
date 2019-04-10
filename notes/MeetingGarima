@@ -1,0 +1,191 @@
+1. Total Number of sentences you analysed: 32
+2. Number of 100% correctly aligned sentences: 1
+3. Number of sentences which are closed translations but not 100% aligned: 7
+4. Number of paraphrased sentences: 6
+5. Number of construction change sentences: 11
+6. Number of corpus mistakes in all your observations: 2
+
+
+
+File :: 16
+
+2.33
+L and M -no data
+Closed aligned but construction changed
+
+2.34
+Sentence is paraphrased and also not alligned correctly.
+L and M layers dont give any data.
+Parser has not aligned properly.
+In N layer, translation of capable is aligned under becomes.
+Sentence is not aligned from -rising to partiality.
+Parser can help if working properly.
+
+2.36
+sentence is closely aligned
+Parser has not aligned kripan and aho properly and also interchanged its translation. I t can be resolved if parser corrects its root for the sentence.
+
+2.35
+Not closely aligned and construction is changed.
+L and M layer dont give any data in the alignment.
+Parser is not giving proper alignment here so parser ki error is there.there is need to change the root for the sentence.
+THere are two caluses in eng sentence but there are three clauses in hindi sentence.
+
+2.37
+construction is changed and also not close.
+corpus error in manual translation for -shareer.
+Not properly aligned in L and M layer
+What is not aligned in any layer
+Form is also not aligned correctly
+
+2.38
+construction is changed 
+in K layer, spell error for intellect but spell is given correctly in Shabdanjli
+N and O layer does not give any alignment and an is also not aligned and also is taking sentence as multiword.
+Parser is not giving proper alignment.
+
+2.39
+Paraphrased 
+L and M layer do not give any data.
+not properly aligned in N ,O ,P Layer.
+Spell for intellect is incorrect .
+Parser cannot decide its boundary as in eng sentence there are two clauses and in hindi ,there is only one clause.
+So, parser is not helpful here.
+
+2.40
+Paraphrased
+Not properly aligned in N and P  layer.
+Corpus correction for eng sentence
+In N layer, incorrect alignment for be-aati hai is there which is incorrect.
+In O layer, sentence is not properly aligned.
+
+2.41
+Should be given by Termsuite dictionary
+
+2.42
+Perfectly translation.
+
+2.43
+Closely aligned
+L and M layer doesnot give any data.
+Termsuite should be used.
+Shri Krishna is not aligned 
+L M N Layer are not giving any data
+Parser is giving error
+
+2.44 2.45
+Corpus error and not properly aligned.
+
+2.46
+Closely aligned
+L M Layer dont give any data
+Parser is giving error and also not properly aligning.
+Also not properly aligned in P layer.
+
+2.47
+Construction changed
+L and M layer not properly aligned
+Parser error
+
+2.48
+Closed alignment.
+Parser error as L and M layer give data but in N layer, not properly aligned.
+MUJKO is not aligned under I.
+Translation is not aligned for meritorious path.
+
+2.49
+Paraphrased
+Incorrect alignment in P layer but data from all upper layer is correct.
+
+2.50
+Paraphrased
+Parser error
+santosh is not aligned
+kehkar is not aligned
+
+
+File ::15
+
+2.33
+Unnecessary Construction change
+L and M layer is not giving any data
+Parser is not giving proper output
+Depent is not aligned in any layer
+
+2.34
+Construction changed
+Parser is giving error as it cant decide its boundary because there are four clauses in eng sentences and only two clauses in hindi translation.
+L and M layer is not giving any data.
+
+2.35
+Unnecessary Construction change
+L and M layer is not giving any data
+Parser error is there  
+
+2.36
+Closed aligned
+Nahi is not aligned
+
+2.37
+Closed aligned
+L and M layer do not give any data
+Termsuite should be used
+Parser error is there 
+
+2.50
+Construction changed
+Not aligned
+L and M layer is not giving any data
+Parser error is there. P arser needs to change its root
+
+2.49
+Translation not proper
+L nad M layer dont give any data
+ 
+2.48
+Not properly translated
+Paraphrasing is there
+Not properly aligned
+Parser error also
+
+2.47
+Not aligned.
+Termsuite shoul be used.
+
+2.46
+Close translation but not aligned
+Termsuite shoud be used for the shloka
+Agaana is not aligned by parser as it got confused for ignorance and agaana
+L and M layers do not ive any data.
+
+2.45
+Close translation but not properly aligned.
+Should is not aligned in any layer
+
+2.44
+Closely translated and aligned
+L and M layer do not give any data
+
+2.43
+Construction changed
+L and M layer do not give any data
+Parser error is there as it cannot decide the boundaries due to number of clauses
+
+2.41
+Close translation 
+Become is not aligned properly
+Do not seem should be multiword and is also not aligned properly
+Wealth is not aligned
+
+2.40
+Construction changed
+L and M layer do not give any data
+Arjun is not aligned
+Whole sentence is not properly aligned.
+Parser error is also here
+
+
+
+
+
+
